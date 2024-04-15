@@ -25,13 +25,12 @@ export class RestService {
     const response = await axios.get<ApiResponseList<Personaje>>(
       `${this.apiUrl}/people`,
     );
-
     return response.data.results.map((item) => {
       return personajeMapper(item);
     });
   }
 
-  createPeople(data: Personaje) {
+  createPeople(data: Personaje): Promise<Personaje> {
     return this.prisma.personaje.create({
       data,
     });

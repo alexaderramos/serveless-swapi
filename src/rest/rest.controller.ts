@@ -21,7 +21,7 @@ export class RestController {
   @Post()
   loadData() {
     this.restService.obtenerPersonajes().then((data) => {
-      data.forEach((item) => {
+      for (const item of data) {
         const p: Personaje = {
           id: null,
           nombre: item.nombre,
@@ -33,7 +33,7 @@ export class RestController {
         };
 
         this.restService.createPeople(p);
-      });
+      }
     });
   }
 
